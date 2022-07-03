@@ -38,7 +38,6 @@ class WD:
         ll_catalog_items = []
         self.Get_HTML(pc_link)
         soup = BeautifulSoup(self.page_source, features='html5lib')
-        
         items = soup.find_all('div', {'class': 'product-thumb'})
         print('count:', len(items))
         for item in items:
