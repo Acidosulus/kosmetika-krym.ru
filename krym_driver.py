@@ -13,6 +13,7 @@ from bs4 import BeautifulSoup
 from lxml import html
 import requests
 
+
 class WD:
     def init(self):
         self.site_url = 'https://kosmetika-krym.ru/'

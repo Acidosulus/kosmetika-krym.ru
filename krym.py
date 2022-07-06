@@ -10,6 +10,7 @@ from krym_good import *
 import colorama
 from colorama import Fore, Back, Style
 
+
 def unload_one_good(dw:WD, lc_link_on_good: str, pc_price:str):
     lo_good = Good(dw, lc_link_on_good, pc_price)
     print(Fore.YELLOW + "Название:" + Fore.LIGHTGREEN_EX, lo_good.name, Fore.RESET)
@@ -24,6 +25,7 @@ def unload_one_good(dw:WD, lc_link_on_good: str, pc_price:str):
 ########################################################################################################################
 ########################################################################################################################
 colorama.init()
+
 ########################################################################################################################
 
 
@@ -57,7 +59,7 @@ if sys.argv[1] == 'catalog':
             price.add_good('',
                                 prepare_str(lo_good.name),
                                 prepare_str(lo_good.description),
-                                prepare_str(lo_good.price),
+                                prepare_str(str(round(float(lo_good.price) * float(sys.argv[4]),2))),
                                 '15',
                                 prepare_str(link),
                                 prepare_for_csv_non_list(lo_good.pictures),
@@ -67,3 +69,7 @@ if sys.argv[1] == 'catalog':
 
 if sys.argv[1] == 'reverse':
     reverse_csv_price(sys.argv[2])
+
+if sys.argv[1] == 'ansi':
+    convert_file_to_ansi(sys.argv[2] + '_reversed.csv')
+

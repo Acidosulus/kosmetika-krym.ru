@@ -22,9 +22,14 @@ from bs4 import BeautifulSoup
 from lxml import html
 
 
+
+
+
 def poiskpers(url):
     geourl = '{0}'.format(quote(url))
     return geourl
+
+
 
 
 class Good:
@@ -49,7 +54,8 @@ class Good:
         pic2 = BeautifulSoup(pic1, features='html5lib')
         self.pictures.append(pic2.find('a')['href'].replace('./',ol.site_url))
 
-        self.price = soup.find('div', 'price').text.strip().replace('руб.','')
-
+        self.price = soup.find('div', 'price').text.strip().replace('руб.','').replace(' ','')
         self.description = soup.find('div', 'tab-pane active').text.strip().replace('\n','').replace('\t','').replace('\r','')
         
+
+

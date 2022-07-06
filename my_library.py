@@ -13,6 +13,13 @@ def reverse_csv_price(lc_source_file_name:str):
         inverted_file.write(i + '\n')
     inverted_file.close()
 
+def convert_file_to_ansi(lc_source_file_name:str):
+    source_file = open(lc_source_file_name, mode='r', encoding='utf-8', errors = 'ignore')
+    target_file = open(lc_source_file_name+'_ansi.csv', mode='w', encoding='1251', errors = 'ignore')
+    target_file.write(source_file.read())
+    source_file.close()
+    target_file.close()
+
 def delete_from_string_between_substrings(lc_source: str, lc_from: str, lc_to: str):    # удаляет подстроку из строки ограниченную начальной и конечной подстрокой
     l = lc_source.find(lc_from)
     r = lc_source.find(lc_to)
